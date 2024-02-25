@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <RTClib.h>
 #include <Music.h>
+#include <Clock.h>
 
 bool initRTC(RTC_DS3231 rtc) {
   if (!rtc.begin())
