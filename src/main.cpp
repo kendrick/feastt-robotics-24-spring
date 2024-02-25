@@ -3,8 +3,6 @@
 #include <Helpers.h>
 // #include <avr8-stub.h>
 
-const int pinLedMinutes = 8;
-const int pinLedHours = 9;
 const int pinButtonMinutes = 2;
 const int pinButtonHours = 3;
 const int pinBuzzer = 13;
@@ -25,8 +23,6 @@ void setup() {
   Serial.begin(9600);
 
   // Initialize outputs
-  pinMode(pinLedMinutes, OUTPUT);
-  pinMode(pinLedHours, OUTPUT);
   pinMode(pinBuzzer, OUTPUT);
 
   // Initialize inputs
@@ -65,26 +61,20 @@ void loop() {
   if (buttonMinutesState == LOW) {
     isAlarmActive = false;
     anyrtttl::nonblocking::stop();
-    digitalWrite(pinLedMinutes, HIGH);
   } else {
-    digitalWrite(pinLedMinutes, LOW);
+    // No-op
   }
 
   if (buttonHoursState == LOW) {
     isAlarmActive = true;
     anyrtttl::nonblocking::stop();
-    digitalWrite(pinLedHours, HIGH);
   } else {
-    digitalWrite(pinLedHours, LOW);
+    // No-op
   }
 
   if (isAlarmRinging) {
     if ((buttonHoursState == LOW || buttonMinutesState == LOW)) {
       previousMillisAlarm = currentMillis;
-
-      digitalWrite(pinLedHours, LOW);
-      digitalWrite(pinLedMinutes, LOW);
-
       isAlarmRinging = false;
     }
   }
