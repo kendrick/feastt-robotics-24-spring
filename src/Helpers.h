@@ -9,8 +9,6 @@ void initRTC(RTC_DS3231 rtc) {
   if (!rtc.begin())
   {
     Serial.println("Couldn't find RTC.");
-    while (1)
-      ;
   }
 
   // Check if the RTC lost power and if so, set the time to the time this sketch was compiled
