@@ -17,7 +17,6 @@ bool isAlarmRinging = false;
 
 // previousMillis[...] store the last time each time was updated
 static unsigned long previousMillisAlarm = 0;
-static unsigned long previousMillisClock = 0;
 
 void setup() {
   Serial.begin(9600);
